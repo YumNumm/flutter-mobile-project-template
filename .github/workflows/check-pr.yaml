@@ -113,8 +113,6 @@ jobs:
           files: "**/test_report.log"
 
       # https://github.com/dorny/test-reporter
-      # NOTE: fork からの PR では GITHUB_TOKEN が read-only になり checks: write が使えないため、
-      # 同一リポジトリからの PR でのみ実行する
       - name: Report test
         if: ${{ steps.check_files.outputs.files_exists == 'true' && github.event.pull_request.head.repo.full_name == github.repository }}
         uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
